@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khaata/widgets/customer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final screens = [const Customers()]; 
   var currentIndex = 0;
   void onChange(int index) {
     setState(() {
@@ -46,6 +48,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
+        body: const Customers(),
         bottomNavigationBar: BottomNavigationBar(
           showUnselectedLabels: false,
           onTap: onChange,
