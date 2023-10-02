@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:khaata/screens/plots_screen.dart';
 import 'package:khaata/widgets/customer.dart';
+import 'package:khaata/widgets/transactions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,17 +15,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final screens = [const Customers()]; 
+  final screens = [
+    const Customers(),
+    const PlotsScreen(),
+    const Transactions(),
+  ];
   var currentIndex = 0;
+  Widget screen = const Customers();
   void onChange(int index) {
     setState(() {
       currentIndex = index;
+      screen = screens[index];
     });
   }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const double iconSize = 35;
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -40,7 +49,9 @@ class _MyAppState extends State<MyApp> {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.notifications_none_sharp),
+              icon: const Icon(
+                Icons.notifications_none_sharp,
+              ),
             ),
             IconButton(
               onPressed: () {},
@@ -48,22 +59,31 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
-        body: const Customers(),
+        body: screen,
         bottomNavigationBar: BottomNavigationBar(
           showUnselectedLabels: false,
           onTap: onChange,
           currentIndex: currentIndex,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(
+                Icons.person,
+                size: iconSize,
+              ),
               label: 'Customer',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.house_outlined),
+              icon: Icon(
+                Icons.house_outlined,
+                size: iconSize,
+              ),
               label: 'Plots',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.swap_vert),
+              icon: Icon(
+                Icons.swap_vert,
+                size: iconSize,
+              ),
               label: 'Transaction',
             ),
           ],
