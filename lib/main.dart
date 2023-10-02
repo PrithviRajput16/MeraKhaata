@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:khaata/screens/customer_screen.dart';
 import 'package:khaata/screens/plots_screen.dart';
+import 'package:khaata/screens/transactions_screen.dart';
 import 'package:khaata/widgets/customer.dart';
 import 'package:khaata/widgets/transactions.dart';
 
@@ -16,12 +18,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final screens = [
-    const Customers(),
+    const CustomersScreen(),
     const PlotsScreen(),
-    const Transactions(),
+    const TransactionsScreen(),
   ];
   var currentIndex = 0;
-  Widget screen = const Customers();
+  Widget screen = const CustomersScreen();
   void onChange(int index) {
     setState(() {
       currentIndex = index;
@@ -43,7 +45,10 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.account_circle_outlined),
+            icon: const Icon(
+              Icons.account_circle_outlined,
+              size: iconSize,
+            ),
           ),
           title: const Text("Welcome User"),
           actions: [
@@ -51,11 +56,15 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {},
               icon: const Icon(
                 Icons.notifications_none_sharp,
+                size: iconSize,
               ),
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.settings),
+              icon: const Icon(
+                Icons.settings,
+                size: iconSize,
+              ),
             ),
           ],
         ),
